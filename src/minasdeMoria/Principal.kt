@@ -1,21 +1,26 @@
-package MinasdeMoria
+package minasdeMoria
 //IMPORTS NECESARIOS
-import Armas.*
-import MinasdeMoria.Peligro.*
-import Personajes.*
+import armas.*
+import minasdeMoria.Peligro.*
+import personajes.*
 import java.io.*
 import kotlin.random.Random
 
 //clase principal
-class Principal {
+
+
+
     fun main(args: Array<String>){
+        //ACCESO A FICHERO Y ESCRITURA DE FICHERO DECLARADOS
+        val fichero=File("CaminoAMoria.txt")
+        val file= FileWriter(fichero,true)
+
         //CONSTANTES
         val SALAS=36
         val PODER=30
         val MAXFLECHAS=20
         val arraySalas= arrayListOf<Sala>()
-        val fichero: File =File("CaminoAMoria.txt")
-        val file:FileWriter= FileWriter(fichero,true)
+
 
         //ARMAS CREADAS
         var vara= Vara(Random.nextInt(PODER)+1)
@@ -28,25 +33,21 @@ class Principal {
         var frodo=Hobbit("Frodo",anillo)
 
         //ACCESORIOS NECESARIOS PARA LAS SALAS.
-        var peligro:Peligro= magico
+        var peligro:Peligro= Magico
         var acceso:Int
 
         //IMPRIMIR CREACIONES
-        //generarSalar(salas,SALAS)
+       // generarSalas(salas,SALAS)
         file.write(gandalf.toString())
-        println(legolas.toString())
-        println(frodo.toString())
-
+        file.write(legolas.toString())
+        file.write(frodo.toString())
+        file.close()
     }
-    // caminarMoria(salas,gandal,legolas,frodo)
-    fun caminarMoria(salas:ArrayList<Sala>,gandalf:Mago,legolas:Elfo,frodo:Hobbit){
+
+
+
+    fun caminarMoria(salas:ArrayList<Sala>,gandalf:Mago,legolas:Elfo,frodo:Hobbit, file:FileWriter){
         for(i in 0..(salas.size-1)){
-            println("Compañía llegando a la sala ${i+1}\n")
+            file.write("Compañía llegando a la sala ${i+1}\n")
         }
     }
-    fun generarSalas(salas: ArrayList<Sala>, SALAS:Int){
-        var pel: Peligro = magico
-
-    }
-
-}

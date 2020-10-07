@@ -1,6 +1,6 @@
-package Personajes
+package personajes
 
-import Armas.Carcaj
+import armas.Carcaj
 
 class Elfo(nombre:String,var carcaj: Carcaj) : Personaje(nombre, Estado.vivo){
     override fun toString(): String {

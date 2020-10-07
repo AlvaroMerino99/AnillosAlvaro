@@ -1,6 +1,6 @@
-package Personajes
+package personajes
 
-import Armas.Vara
+import armas.Vara
 
 class Mago(nombre:String,var vara: Vara) : Personaje(nombre, Estado.vivo) {
 //el objeto mago no tiene como atributo energía, ya que la energía depende de la vara
