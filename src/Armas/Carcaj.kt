@@ -1,5 +1,6 @@
 package Armas
 
-class Carcaj (flechas:Int){
+class Carcaj (var flechas:Int){
+
 
 }
