@@ -1,18 +1,21 @@
 package MinasdeMoria
-
+//IMPORTS NECESARIOS
 import Armas.*
+import MinasdeMoria.Peligro.*
 import Personajes.*
 import kotlin.random.Random
 
-
+//clase principal
 class Principal {
     fun main(args: Array<String>){
+        //CONSTANTES
         val SALAS=36
-        val MAXPODER=30
+        val PODER=30
         val MAXFLECHAS=20
         val arraySalas= arrayListOf<Sala>()
+
         //ARMAS CREADAS
-        var vara= Vara(Random.nextInt(MAXPODER)+1)
+        var vara= Vara(Random.nextInt(PODER)+1)
         var carcaj =Carcaj(Random.nextInt(MAXFLECHAS)+1)
         var anillo= Anillo()
 
@@ -21,8 +24,8 @@ class Principal {
         var legolas=Elfo("Legolas",carcaj)
         var frodo=Hobbit("Frodo",anillo)
 
-
-        var peligro:Peligro=Peligro.magico
+        //ACCESORIOS NECESARIOS PARA LAS SALAS.
+        var peligro:Peligro= magico
         var acceso:Int
 
         //IMPRIMIR CREACIONES
@@ -39,7 +42,8 @@ class Principal {
         }
     }
     fun generarSalas(salas: ArrayList<Sala>, SALAS:Int){
-        var pel: Peligro = Peligro.magico
+        var pel: Peligro = magico
+
     }
 
 }

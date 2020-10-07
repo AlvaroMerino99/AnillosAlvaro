@@ -1,5 +1,5 @@
 package Armas
 
-class Anillo(var puesto:Boolean) {
+class Anillo(var puesto:Boolean=false) {
 
 }
