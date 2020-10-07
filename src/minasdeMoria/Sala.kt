@@ -129,8 +129,21 @@ class Sala
                       }
         }else{
             frodo.quitarseAnillo()
+            if(probabilidad<20){
+                file.write("Han pasado la sala \n")
+            }else{
+                if (probabilidad < 80) {
+                    file.write("Han pasado la sala \n")
+                } else{
+                    file.write("Frodo ha muerto. \n")
+                    file.write("No conozco a la mitad de vosotros ni la mitad de lo que desearía, y lo que deseo es menos de la mitad de lo que la mitad merecéis.\n")
+                    frodo.estado=Estado.muerto
+                }
+            }
+            }
         }
-    }
+
+
 
     /**
      * método to string
