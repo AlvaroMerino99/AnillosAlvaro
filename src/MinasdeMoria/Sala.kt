@@ -34,7 +34,7 @@ class Sala {
     }
 
     override fun toString(): String {
-        return super.toString()+"Sala número $numeroSala, con peligro $peligro, poder maligno $poderMaligno, y con $flechas flechas"
+        return super.toString()+"Sala número $numeroSala, con peligro $peligro, poder maligno $poderMaligno, y con $flechas flechas\n"
     }
 
 }
