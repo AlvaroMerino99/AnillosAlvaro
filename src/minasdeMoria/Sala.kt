@@ -47,23 +47,39 @@ class Sala
             }
         }
     }
+
+    /**
+     * Método salaAcción
+     * en este método recorremos las salas que sean de acción y legolas actuará para continuar su camino a moria
+     * en esta sala el poder maligno representará a los enemigos que hay en la sala, y legolas lo matará con su arco
+     * y sus flechas, si se queda sin flechas tiene un 80% de posibilidad de huir, si no huye muere.
+     */
     fun salaAccion(legolas:Elfo, sala:Sala, file: FileWriter){
         for(i in 1..sala.poderMaligno){
             if(legolas.carcaj.flechas>0){
                 legolas.lanzaFlechas()
             }else{
-                file.write("Intentando huir")
+                file.write("Intentando huir \n")
                 if((Random.nextInt(100)+1)<80){
-                    file.write("Han huido con éxito")
-                    file.write("Si con mi vida, o con mi muerte puedo protegerte, lo haré… cuenta con mi espada, y con mi arco y con mi hacha")
-                }else{
+                    file.write("Han huido con éxito \n")
+                       }else{
                     legolas.estado=Estado.muerto
-                    file.write("Legolas ha muerto")
+                    file.write("Legolas ha muerto \n")
+                    file.write("Si con mi vida, o con mi muerte puedo protegerte, lo haré… cuenta con mi espada, y con mi arco y con mi hacha \n")
+
                 }
                 break
             }
         }
     }
+
+    /**
+     * Método salaMagica
+     * en este método recorremos las salas que sean mágicas y gandalf actuará para continuar su camino a moria
+     * en esta sala el poder maligno se compara con la energía de la vara de gandalf, si es superior simepre se pasa de sala
+     * si es igual se pasa el 60% de las veces y si es menor se pasa el 30, si no se pasa se intenta huir,
+     * y si no se huye gandalf muere.
+     */
     fun salaMagica(gandalf: Mago, sala:Sala, file:FileWriter ){
         val probabilidad:Int=Random.nextInt(until = 100)+1
 
@@ -89,6 +105,13 @@ class Sala
                     }
                 }
         }
+
+    /**
+     * Método sala habilidad
+     * en este método recorremos las salas que sean de habilidad y frodo actuará para continuar su camino a moria
+     * si frodo se pone el anillo continuamos el 90% de las veces, sino el 20%, sino continuan, se intenta huir,
+     * si no huye, frodo muere.
+     */
     fun salaHabilidad(frodo: Hobbit, sala:Sala, file: FileWriter){
         val probabilidad:Int=Random.nextInt(until = 100)+1
         if(probabilidad>50){
@@ -109,7 +132,9 @@ class Sala
         }
     }
 
-
+    /**
+     * método to string
+     */
 
     override fun toString(): String {
         return super.toString()+"Sala número $numeroSala, con peligro $peligro, poder maligno $poderMaligno, y con $flechas flechas\n"

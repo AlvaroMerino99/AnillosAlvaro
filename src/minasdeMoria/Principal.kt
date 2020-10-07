@@ -8,7 +8,10 @@ import kotlin.random.Random
 
 //clase principal
 
-
+/**
+ * Clase principal
+ * utilizada para la resolución del ejercicio
+ */
 
     fun main(args: Array<String>){
         //ACCESO A FICHERO Y ESCRITURA DE FICHERO DECLARADOS
@@ -46,7 +49,10 @@ import kotlin.random.Random
     }
 
 
-
+/**
+ * Metodo caminarMoria
+ * en este método los personajes recorren las salas siempre y cuando no hayan muerto
+ */
     fun caminarMoria(salas:ArrayList<Sala>,gandalf:Mago,legolas:Elfo,frodo:Hobbit, file:FileWriter){
         var victoria:Boolean=true
         for(i in 0 until salas.size){
@@ -70,6 +76,10 @@ import kotlin.random.Random
         }
         file.close()
     }
+
+    /**
+    * En este método generamos las salas(36), que vamos a utilizar en el programa
+    */
     fun generaSalas(salas:ArrayList<Sala>, SALAS:Int){
         for(i in 0 until SALAS){
             salas.add((Sala(i+1)))
