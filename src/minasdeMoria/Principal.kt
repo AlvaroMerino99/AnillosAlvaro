@@ -37,17 +37,41 @@ import kotlin.random.Random
         var acceso:Int
 
         //IMPRIMIR CREACIONES
-       // generarSalas(salas,SALAS)
+        generaSalas(arraySalas,SALAS)
         file.write(gandalf.toString())
         file.write(legolas.toString())
         file.write(frodo.toString())
+        caminarMoria(arraySalas,gandalf,legolas,frodo,file)
         file.close()
     }
 
 
 
     fun caminarMoria(salas:ArrayList<Sala>,gandalf:Mago,legolas:Elfo,frodo:Hobbit, file:FileWriter){
-        for(i in 0..(salas.size-1)){
-            file.write("Compañía llegando a la sala ${i+1}\n")
+        var victoria:Boolean=true
+        for(i in 0 until salas.size){
+            if(gandalf.estado==Estado.vivo && frodo.estado==Estado.vivo && legolas.estado==Estado.vivo){
+                file.write("Entrando en la sala número ${i+1}. Tipo de la sala ${salas[i].peligro}... \n")
+                if(salas[i].peligro.equals(Peligro.Accion)){
+                    salas[i].salaAccion(legolas,salas[i],file)
+                }else if(salas[i].peligro.equals(Peligro.Magico)){
+                    salas[i].salaMagica(gandalf,salas[i],file)
+                }else{
+                    salas[i].salaHabilidad(frodo,salas[i],file)
+                }
+            }else{
+                file.write("El equipo ha sufrido una baja \n")
+                victoria=false
+                break;
+            }
+        }
+        if(victoria){
+            file.write("El equipo ha llegado a Moria, BUEN TRABAJO \n")
+        }
+        file.close()
+    }
+    fun generaSalas(salas:ArrayList<Sala>, SALAS:Int){
+        for(i in 0 until SALAS){
+            salas.add((Sala(i+1)))
         }
     }

@@ -4,6 +4,7 @@ package minasdeMoria
 import personajes.*
 import java.io.FileWriter
 import kotlin.random.Random
+import personajes.Hobbit as Hobbit
 
 enum class Peligro{Magico,Accion,Habilidad}
 
@@ -15,10 +16,10 @@ class Sala
  * poderMaligno: es el valor(entero) que tiene de poder maligno esa sala
  * flechas: son las flechas que tendría esa sala y que el elfo las podría coger.
  */(//VARIABLES QUE VAMOS A UTILIZAR EN LAS SALAS
-        private var numeroSala: Int) {
-        private var peligro:Peligro
-        private var poderMaligno:Int
-        private var flechas:Int=0
+         var numeroSala: Int) {
+         var peligro:Peligro
+         var poderMaligno:Int
+         var flechas:Int=0
 
     init {
         when (Random.nextInt(until = 3)+1) {
@@ -68,26 +69,45 @@ class Sala
 
         if(gandalf.poderVara()>poderMaligno){
 
-                file.write("Han pasado la sala")
+                file.write("Han pasado la sala \n")
 
         }else if(gandalf.poderVara()==poderMaligno) {
             if (probabilidad < 60) {
-                file.write("Han pasado la sala")
+                file.write("Han pasado la sala \n")
             } else{
-                file.write("Gandalf ha muerto.")
-                file.write("Muchos de los que viven merecen morir y algunos de los que mueren merecen la vida")
+                file.write("Gandalf ha muerto. \n")
+                file.write("Muchos de los que viven merecen morir y algunos de los que mueren merecen la vida \n")
                 gandalf.estado=Estado.muerto
             }
         }else{
                     if(probabilidad<30) {
-                        file.write("Han pasado la sala")
+                        file.write("Han pasado la sala \n")
                     }else{
-                        file.write("Gandalf ha muerto.")
-                        file.write("Muchos de los que viven merecen morir y algunos de los que mueren merecen la vida")
+                        file.write("Gandalf ha muerto. \n")
+                        file.write("Muchos de los que viven merecen morir y algunos de los que mueren merecen la vida. \n")
                         gandalf.estado=Estado.muerto
                     }
                 }
         }
+    fun salaHabilidad(frodo: Hobbit, sala:Sala, file: FileWriter){
+        val probabilidad:Int=Random.nextInt(until = 100)+1
+        if(probabilidad>50){
+            frodo.ponerseAnillo()
+                    if(probabilidad>90){
+                        file.write("Han pasado la sala \n")
+                    }else{
+                        if (probabilidad < 80) {
+                            file.write("Han pasado la sala \n")
+                        } else{
+                            file.write("Frodo ha muerto. \n")
+                            file.write("No conozco a la mitad de vosotros ni la mitad de lo que desearía, y lo que deseo es menos de la mitad de lo que la mitad merecéis.\n")
+                            frodo.estado=Estado.muerto
+                        }
+                      }
+        }else{
+            frodo.quitarseAnillo()
+        }
+    }
 
 
 
